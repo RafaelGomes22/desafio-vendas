@@ -1,0 +1,7 @@
+<main class="container-app">
+  <header class="mb-2">
+    <h4 class="titulo-vendas">Gestão de Vendas</h4>
+  </header>
+  <app-upload (vendasImportadas)="dashboard.carregar($event)"></app-upload>
+  <app-dashboard #dashboard></app-dashboard>
+</main>

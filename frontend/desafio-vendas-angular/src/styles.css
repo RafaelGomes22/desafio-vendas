@@ -1,0 +1,11 @@
+@import "primeicons/primeicons.css";
+@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeng/resources/primeng.min.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  margin: 0;
+  background: #f5f6f8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container-app { max-width: 1200px; margin: 0 auto; padding: 24px; }

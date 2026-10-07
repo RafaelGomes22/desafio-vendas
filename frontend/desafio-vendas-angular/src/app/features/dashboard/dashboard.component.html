@@ -1,0 +1,62 @@
+<div class="card p-3 mb-3">
+  <input id="filtroProduto" pInputText 
+         [(ngModel)]="filtroProduto" (ngModelChange)="aplicarFiltro()"
+         aria-label="Filtro por nome do produto" placeholder="Filtrar por produto">
+</div>
+
+<p-table [value]="filtradas" [paginator]="true" [rows]="10"
+         [responsive]="true" [sortField]="'produto'" [sortOrder]="1">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="produto">Produto <p-sortIcon field="produto"></p-sortIcon></th>
+      <th pSortableColumn="quantidade">Quantidade <p-sortIcon field="quantidade"></p-sortIcon></th>
+      <th pSortableColumn="valorTotal">Valor Total <p-sortIcon field="valorTotal"></p-sortIcon></th>
+      <th>Ações</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item>
+    <tr>
+      <td>{{ item.produto }}</td>
+      <td>{{ item.quantidade }}</td>
+      <td>{{ item.valorTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary"
+                type="button"
+                (click)="selecionar(item)"
+                [attr.aria-label]="'Ver detalhes de ' + item.produto">
+          Detalhes
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<div>
+   <button class="btn btn-primary mt-3 w-100" type="button" (click)="exportar()">
+    Exportar vendas
+  </button>
+</div>
+
+<div class="card mt-3 p-3" style="height: 400px">
+  <p-chart type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
+</div>
+
+<div bsModal #detalhesModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="detalhesTitulo" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="produtoSelecionado">
+      <div class="modal-header">
+        <h5 id="detalhesTitulo" class="modal-title">Detalhes do produto</h5>
+        <button type="button" class="close" aria-label="Fechar" (click)="detalhesModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Produto:</strong> {{ produtoSelecionado.produto }}</p>
+        <p><strong>Quantidade:</strong> {{ produtoSelecionado.quantidade }}</p>
+        <p><strong>Valor total:</strong>
+          {{ produtoSelecionado.valorTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

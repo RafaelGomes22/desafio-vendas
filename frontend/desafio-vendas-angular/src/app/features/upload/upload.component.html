@@ -1,0 +1,9 @@
+<div class="card p-3 mb-3">
+  <label for="csvFile" class="font-weight-bold">Importar planilha de vendas</label>
+  <input id="csvFile" type="file" accept=".csv,text/csv"
+         class="form-control-file"
+         aria-label="Selecionar arquivo CSV"
+         (change)="selecionarArquivo($event)">
+  <div *ngIf="sucesso" class="alert alert-success mt-2" role="status">{{ sucesso }}</div>
+  <div *ngIf="erro" class="alert alert-danger mt-2" role="alert">{{ erro }}</div>
+</div>

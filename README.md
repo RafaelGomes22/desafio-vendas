@@ -32,7 +32,7 @@ dotnet ef database update --project DesafioVendas.Infrastructure --startup-proje
 dotnet test
 ```
 
-## Executar Angular
+## Executar Frontend
 
 Pré-requisito: Node compatível com Angular 13.
 
@@ -54,25 +54,10 @@ A URL da API está em:
 
 `src/app/core/services/vendas.service.ts`
 
-## Arquitetura
+## Executar testes
 
-```text
-Angular 13
-   |
-   | HTTP/JSON
-   v
-ASP.NET Core Web API
-   |
-   +-- Controllers
-   |
-   +-- IVendaRepository
-   |
-   +-- VendaRepository
-   |
-   +-- Entity Framework Core
-   |
-   v
-SQL Server / LocalDB
+```bash
+npm test -- --watch=false
 ```
 
 
